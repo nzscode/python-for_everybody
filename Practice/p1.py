@@ -1,15 +1,32 @@
+# To open a file:
+"""
+text = open ('../Resources/auguries_of_innocence_william_blake.txt')
+"""
 
-rv = """Once upon a midnight dreary, while I pondered, weak and weary,
-    Over many a quaint and curious volume of forgotten lore,
-    While I nodded, nearly napping, suddenly there came a tapping,
-    As of some one gently rapping, rapping at my chamber door.
-    'Tis some visitor, I muttered, tapping at my chamber door;
-    Only this and nothing more."""
 
-# Write your code here!
-num_chars = 0
-for char in rv:
-    num_chars += 1
+# To open and print the lines of a file
+"""
+text = open ('../Resources/auguries_of_innocence_william_blake.txt')
+for line in text:
+    print(line)
+    """
 
-print(num_chars)
-print(len(rv))
+# To open and read the whole text
+"""
+text = open ('../Resources/auguries_of_innocence_william_blake.txt')
+whole_text = text.read()
+print(whole_text)
+"""
+
+# To open and read the whole text as a single line
+"""
+text = open ('../Resources/auguries_of_innocence_william_blake.txt')
+whole_text = text.readlines()
+print(whole_text)
+"""
+
+# To search through a file
+text = open ('../Resources/auguries_of_innocence_william_blake.txt')
+for line in text:
+    line = line.rstrip()
+    print(line)
