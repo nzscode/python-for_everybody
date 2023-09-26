@@ -1,0 +1,82 @@
+[
+  {
+    "ISBN": "978-0451524935",
+    "BookName": "To Kill a Mockingbird",
+    "AuthorFirstName": "Harper",
+    "AuthorLastName": "Lee",
+    "PublishedDate": "July 11, 1960",
+    "PublishedLocation": "New York"
+  },
+  {
+    "ISBN": "978-0141983769",
+    "BookName": "1984",
+    "AuthorFirstName": "George",
+    "AuthorLastName": "Orwell",
+    "PublishedDate": "June 8, 1949",
+    "PublishedLocation": "London"
+  },
+  {
+    "ISBN": "978-0061120084",
+    "BookName": "To Kill a Mockingbird",
+    "AuthorFirstName": "F. Scott",
+    "AuthorLastName": "Fitzgerald",
+    "PublishedDate": "April 10, 1925",
+    "PublishedLocation": "New York"
+  },
+  {
+    "ISBN": "978-0544003415",
+    "BookName": "The Hobbit",
+    "AuthorFirstName": "J.R.R.",
+    "AuthorLastName": "Tolkien",
+    "PublishedDate": "September 21, 1937",
+    "PublishedLocation": "London"
+  },
+  {
+    "ISBN": "978-0062315007",
+    "BookName": "The Great Gatsby",
+    "AuthorFirstName": "F. Scott",
+    "AuthorLastName": "Fitzgerald",
+    "PublishedDate": "April 10, 1925",
+    "PublishedLocation": "New York"
+  },
+  {
+    "ISBN": "978-0064400011",
+    "BookName": "Charlotte's Web",
+    "AuthorFirstName": "E.B.",
+    "AuthorLastName": "White",
+    "PublishedDate": "October 15, 1952",
+    "PublishedLocation": "New York"
+  },
+  {
+    "ISBN": "978-0452284244",
+    "BookName": "Brave New World",
+    "AuthorFirstName": "Aldous",
+    "AuthorLastName": "Huxley",
+    "PublishedDate": "October 10, 1932",
+    "PublishedLocation": "London"
+  },
+  {
+    "ISBN": "978-0679422990",
+    "BookName": "The Catcher in the Rye",
+    "AuthorFirstName": "J.D.",
+    "AuthorLastName": "Salinger",
+    "PublishedDate": "July 16, 1951",
+    "PublishedLocation": "New York"
+  },
+  {
+    "ISBN": "978-0061122415",
+    "BookName": "Moby-Dick",
+    "AuthorFirstName": "Herman",
+    "AuthorLastName": "Melville",
+    "PublishedDate": "October 18, 1851",
+    "PublishedLocation": "New York"
+  },
+  {
+    "ISBN": "978-0062315007",
+    "BookName": "The Odyssey",
+    "AuthorFirstName": "Homer",
+    "AuthorLastName": "",
+    "PublishedDate": "8th century BCE",
+    "PublishedLocation": "Ancient Greece"
+  }
+]

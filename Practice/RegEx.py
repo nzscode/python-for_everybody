@@ -2,7 +2,8 @@ import re
 
 
 # text = input("Enter text: ")
-# file = open("../Resources/" + text)
+text = 'mbox-short.txt'
+file = open("../Resources/" + text)
 
 count_lst = []
 count = 0
