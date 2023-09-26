@@ -58,6 +58,8 @@ import csv
 # Convert dict to json
 import json
 
+
+
 # # Importing dictionary from another module
 # from create_rando_dict import make_dict_rando3_mine
 # rando_dict = make_dict_rando3_mine()
@@ -125,17 +127,43 @@ customer = [{
 
 # To convert from CSV
 
-f_names = ["Sophia", "Liam", "Olivia", "Noah", "Emma-Noelle", "Jackson", "Ava", "Lucas", "Isabella", "William", "Ahmed",
-           "Mei", "Diego", "Fatima", "Jovan", "Amina", "Svetlana", "Priya", "Robert", "Tracy"]
-l_names = ["Smith", "Kim", "García", "Müller", "Patel", "Nguyen", "Silva", "Yamamoto", "Martinez", "Rossi", "Khan",
-           "Hernandez", "Andersson", "Li", "Petrov", "Santos", "O'Connor", "Alves", "Gonzalez", "Dubois"]
-grocery_items = ["Apples", "Bananas", "Milk", "Bread", "Eggs", "Chicken", "Pasta", "Rice", "Cereal", "Tomatoes",
-                 "Potatoes", "Carrots", "Spinach", "Orange Juice", "Coffee", "Cheese", "Yogurt", "Onions",
-                 "Canned Soup", "Toilet Paper"]
+# f_names = ["Sophia", "Liam", "Olivia", "Noah", "Emma-Noelle", "Jackson", "Ava", "Lucas", "Isabella", "William", "Ahmed",
+#            "Mei", "Diego", "Fatima", "Jovan", "Amina", "Svetlana", "Priya", "Robert", "Tracy"]
+# l_names = ["Smith", "Kim", "García", "Müller", "Patel", "Nguyen", "Silva", "Yamamoto", "Martinez", "Rossi", "Khan",
+#            "Hernandez", "Andersson", "Li", "Petrov", "Santos", "O'Connor", "Alves", "Gonzalez", "Dubois"]
+# grocery_items = ["Apples", "Bananas", "Milk", "Bread", "Eggs", "Chicken", "Pasta", "Rice", "Cereal", "Tomatoes",
+#                  "Potatoes", "Carrots", "Spinach", "Orange Juice", "Coffee", "Cheese", "Yogurt", "Onions",
+#                  "Canned Soup", "Toilet Paper"]
 
-full_name = []
-full_name_tup = []
+f_names = ["Sophia", "Liam", "Olivia", "Noah"]
+l_names = ["Smith", "Kim", "García", "Müller"]
+grocery_items = ["Apples", "Bananas", "Milk", "Bread", "Eggs"]
+
+from reportlab.platypus import SimpleDocTemplate, TableStyle
+from reportlab.platypus import Paragraph, Spacer, Table, Image
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib import colors
+
+
+path = "../Resources/"
+pdf = SimpleDocTemplate(path + "report.pdf")
+styles = getSampleStyleSheet()
+
+pdf_title = Paragraph("Names", styles["h1"])
+
+
+full_names = []
+table_headers = ['First Names', 'Last Names']
+full_names.append(table_headers)
 for i in range(len(f_names)):
-    full_name.append([f_names[i], l_names[i]])
-    full_name_tup.append((f_names[i], l_names[i]))
-print(full_name)
+    full_names.append([f_names[i], l_names[i]])
+
+pdf_table = Table(data=full_names)
+
+header_style = TableStyle([
+    ('BACKGROUND', (0,0), (1,0), colors.grey),
+    ('TEXTCOLOR', (0,0), (1,0), colors.blue)
+])
+
+pdf_table.setStyle(header_style)
+pdf.build([pdf_title, pdf_table])
