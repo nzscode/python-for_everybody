@@ -36,7 +36,6 @@
 # print(tup[0])
 # print(len(tup))
 # print(tup.count())
-import csv
 # # Open csv
 # import csv
 # import json
@@ -57,8 +56,6 @@ import csv
 
 # Convert dict to json
 import json
-
-
 
 # # Importing dictionary from another module
 # from create_rando_dict import make_dict_rando3_mine
@@ -89,7 +86,7 @@ customer = [{
     ],
     "store": "Price Chopper"},
     {"first_name": "Mindy",
-    "purchases": [
+     "purchases": [
          {
              "item": "Carrot",
              "price": 1.72
@@ -98,8 +95,8 @@ customer = [{
              "item": "Olive Oil",
              "price": 6.58,
          }
-    ],
-    "store": "Shop Express"}
+     ],
+     "store": "Shop Express"}
 ]
 
 #
@@ -144,13 +141,11 @@ from reportlab.platypus import Paragraph, Spacer, Table, Image
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib import colors
 
-
 path = "../Resources/"
 pdf = SimpleDocTemplate(path + "report.pdf")
 styles = getSampleStyleSheet()
 
 pdf_title = Paragraph("Names", styles["h1"])
-
 
 full_names = []
 table_headers = ['First Names', 'Last Names']
@@ -161,9 +156,10 @@ for i in range(len(f_names)):
 pdf_table = Table(data=full_names)
 
 header_style = TableStyle([
-    ('BACKGROUND', (0,0), (1,0), colors.grey),
-    ('TEXTCOLOR', (0,0), (1,0), colors.blue)
+    ('BACKGROUND', (0, 0), (1, 0), colors.grey),
+    ('TEXTCOLOR', (0, 0), (1, 0), colors.blue)
 ])
 
 pdf_table.setStyle(header_style)
 pdf.build([pdf_title, pdf_table])
+
