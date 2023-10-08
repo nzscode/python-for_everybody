@@ -4,11 +4,16 @@ conn = psycopg2.connect(
     user='postgres',
     password='password',
     host='localhost',
-    port=5432)
+    port=5432,
+    database='demo_database')
 
 conn.autocommit = True
 cur = conn.cursor()
 
+cur.execute("""ALTER TABLE old_demo_table RENAME TO new_demo_table;""")
+
+conn.commit()
+conn.close()
 # cur.execute("""DROP TABLE IF EXISTS demo_table1;""")
 # cur.execute("""CREATE TABLE demo_table1(
 #     id SERIAL PRIMARY KEY,
@@ -28,7 +33,4 @@ cur = conn.cursor()
 #     );""")
 
 
-cur.execute("""ALTER DATABASE "demo_database_old" RENAME TO "demo_database";""")
 
-conn.commit()
-conn.close()
