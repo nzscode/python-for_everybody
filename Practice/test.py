@@ -69,12 +69,22 @@ insert_multiple_values = """INSERT INTO demo_schema.demo_table (id) VALUES (95),
 insert_multiple_values_multiple_columns = """INSERT INTO demo_schema.demo_table (id, f_name) VALUES (5, 'Laila'), (41, 'Juno'), (125, 'Yennefer'), (2, 'Ruby' ), (9852, 'Halifa');"""
 
 # Insert Multiple Rows 2
-"""INSERT INTO demo_schema.demo_table (id, l_name) VALUES
-(25, 'Tony'), 
-(64, 'Vince'), 
-(125, 'Zefren'), 
-(8, 'Jorge' ), 
-(295, 'Patel');"""
+"""INSERT INTO demo_schema.demo_table (id, f_name, l_name) VALUES
+(5, 'Laila', NULL), 
+(9852, 'Halifa', NULL), 
+(125, 'Travis', 'James'), 
+(7, 'Ellen', 'Yashuda'), 
+(3, 'Sirio', 'Forrel'),
+(847, 'Waitecosta', 'Warren'),
+(41, 'Juno', 'Thompson'),
+(2, 'Ruby', 'Thompson'),
+(125, 'Yennefer', 'Patel'),
+(125, 'Viola', NULL),
+(25, 'Tony', 'Jessup'), 
+(64, 'Vince', 'Warret'), 
+(125, 'Zefren', 'Cassel'), 
+(8, 'Jorge', 'Espinoza' ), 
+(295, 'Patel', 'Travis');"""
 
 
 
@@ -94,7 +104,9 @@ change_value_to_default = """UPDATE demo_schema.demo_table SET demo_col_1 = DEFA
 copy_values_same_table = """INSERT INTO demo_schema.demo_table(demo_col_2) SELECT demo_col_1 FROM demo_schema.demo_table;"""
 copy_values_different_table = """INSERT INTO demo_schema.demo_schema_table(demo_schema_col_1) SELECT demo_col_1 FROM demo_schema.demo_table;"""
 
-cur.execute()
+# Order By
+order = """SELECT f_name FROM demo_schema.demo_table ORDER BY f_name ASC;"""
+cur.execute(order)
 
 conn.commit()
 conn.close()
