@@ -106,7 +106,35 @@ copy_values_different_table = """INSERT INTO demo_schema.demo_schema_table(demo_
 
 # Order By
 order = """SELECT f_name FROM demo_schema.demo_table ORDER BY f_name ASC;"""
-cur.execute(order)
+
+# Where
+where = """SELECT * FROM demo_schema.demo_table WHERE id = '125';"""
+where_in = """SELECT * FROM demo_schema.demo_table WHERE id IN (125, 7, 9);"""
+where_and = """SELECT * FROM demo_schema.demo_table WHERE id = '125' AND l_name = 'Cassel';"""
+where_is_null = """SELECT * FROM demo_schema.demo_table WHERE id = '125' AND l_name IS NULL;"""
+where_or = """SELECT * FROM demo_schema.demo_table WHERE id = '4' OR l_name = 'Espinoza';"""
+where_between = """SELECT * FROM demo_schema.demo_table WHERE id BETWEEN 5 AND 100;"""
+where_like_matches_first_to_case_sensitive = """SELECT * FROM demo_schema.demo_table WHERE f_name LIKE 'Vio%';"""
+where_like_matches_num_of_single_chars_case_sensitive = """SELECT * FROM demo_schema.demo_table WHERE f_name LIKE '_i%';"""
+where_like_matches_first_to_case_insensitive = """SELECT * FROM demo_schema.demo_table WHERE f_name ILIKE 'Vio%';"""
+where_like_matches_num_of_single_chars_case_insensitive = """SELECT * FROM demo_schema.demo_table WHERE f_name ILIKE '_i%';"""
+where_not = """SELECT * FROM demo_schema.demo_table WHERE l_name NOT IN ('James', 'Warren', 'Thompson', 'Patel', 'Yashuda', 'Travis');"""
+
+# LIMIT
+limit = """SELECT * FROM demo_schema.demo_table LIMIT 3;"""
+
+cur.execute(limit)
+result_returned = cur.fetchall()
+print(result_returned)
+
+# To see the results in an indented form instead of a giant string
+for row in result_returned:
+    print("id: ", row[0])
+    print("f_name: ", row[1])
+    print("l_name: ", row[2])
+    # print("\n")
+
+
 
 conn.commit()
 conn.close()
