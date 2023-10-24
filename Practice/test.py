@@ -4,11 +4,36 @@ conn = psycopg2.connect(
     user='postgres',
     password='password',
     host='localhost',
-    port=5432,
-    database='demo_database')
+    port=5432)
 
 conn.autocommit = True
 cur = conn.cursor()
+
+# Create Database:
+create_database = """CREATE DATABASE IF NOT EXISTS demo_database;"""
+
+# Rename Database
+rename_database = """ALTER DATABASE demo_database RENAME TO demo_test_database;"""
+
+# Drop Database
+drop_database = """DROP DATABASE IF EXISTS demo_database;"""
+drop_database_cascade = """DROP DATATBASE IF EXISTS demo_database CASCADE;"""
+
+# Create Schema
+create_schema = """CREATE SCHEMA IF NOT EXISTS demo_schema"""
+
+# Rename Schema
+rename_schema = """ALTER SCHEMA demo_schema RENAME TO demo_test_schema;"""
+
+# Drop Schema
+drop_schema = """DROP SCHEMA IF EXISTS demo_schema;"""
+drop_schema_cascade = """DROP SCHEMA IF EXISTS demo_schema CASCADE;"""
+
+# Set Schema search_path
+set_search_path = """SET search_path TO demo_schema, public;"""
+
+# Show Schema search_path
+show_seacrh_path = """SHOW search_path;"""
 
 # Create Table
 create_table = """CREATE TABLE IF NOT EXISTS demo_schema.demo_table(
@@ -71,12 +96,17 @@ insert_multiple_values_multiple_columns = """INSERT INTO demo_schema.demo_table 
 # Insert Multiple Rows 2
 """INSERT INTO demo_schema.demo_table (id, f_name, l_name) VALUES
 (5, 'Laila', NULL), 
-(9852, 'Halifa', NULL), 
+(69, 'Angel', 'Rivioni'),
+(144, 'Safra', 'Barril'),
+(27, 'Ravio', NULL),
+(11, 'Delivio', 'Viona'),
+(99, 'Ruby', 'Espinoza'),
 (125, 'Travis', 'James'), 
 (7, 'Ellen', 'Yashuda'), 
 (3, 'Sirio', 'Forrel'),
 (847, 'Waitecosta', 'Warren'),
 (41, 'Juno', 'Thompson'),
+(9852, 'Halifa', NULL), 
 (2, 'Ruby', 'Thompson'),
 (125, 'Yennefer', 'Patel'),
 (125, 'Viola', NULL),
@@ -122,16 +152,24 @@ where_not = """SELECT * FROM demo_schema.demo_table WHERE l_name NOT IN ('James'
 
 # LIMIT
 limit = """SELECT * FROM demo_schema.demo_table LIMIT 3;"""
+offset = """SELECT * FROM demo_table LIMIT 5, offset 2;"""
 
-cur.execute(limit)
-result_returned = cur.fetchall()
-print(result_returned)
+# Inner Join
+inner_join = """SELECT a_fruit, b_fruit FROM table_a INNER JOIN table_b ON a_fruit = b_fruit;"""
+
+# Group By
+group_by = """SELECT l_name FROM customers GROUP BY l_name;"""
+
+
+cur.execute("""CREATE DATABASE demo_database;""")
+# result_returned = cur.fetchall()
+# print(result_returned)
 
 # To see the results in an indented form instead of a giant string
-for row in result_returned:
-    print("id: ", row[0])
-    print("f_name: ", row[1])
-    print("l_name: ", row[2])
+# for row in result_returned:
+#     print("id: ", row[0])
+#     print("f_name: ", row[1])
+#     print("l_name: ", row[2])
     # print("\n")
 
 
