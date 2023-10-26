@@ -1,10 +1,12 @@
-import random
-import math
+num1 = int(input("enter num1"))
+num2 = int(input("enter num2"))
+operand = input("enter  +, - , * ,  /")
 
-num = random.randint(1, 100) + 1
-print("Number : " + str(num) + "/ 5")
-
-if num % 5 == 0:
-    print("Quotient: " + str(num / 5))
+if operand  == "+":
+    print(num1 + num2)
+elif operand == "-":
+    print(num1 - num2)
+elif operand == "*":
+    print(num1 * num2)
 else:
-    print("Quotient: " + str((math.floor(num / 5))), "Remainder: " + str(num % 5))
+    print(float(num1) / float(num2))
