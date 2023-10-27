@@ -160,8 +160,9 @@ inner_join = """SELECT a_fruit, b_fruit FROM table_a INNER JOIN table_b ON a_fru
 # Group By
 group_by = """SELECT l_name FROM customers GROUP BY l_name;"""
 
+alias = """SELECT lastName AS customers.l_name """
 
-cur.execute("""CREATE DATABASE demo_database;""")
+cur.execute(alias)
 # result_returned = cur.fetchall()
 # print(result_returned)
 
