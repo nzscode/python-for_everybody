@@ -33,7 +33,7 @@ drop_schema_cascade = """DROP SCHEMA IF EXISTS demo_schema CASCADE;"""
 set_search_path = """SET search_path TO demo_schema, public;"""
 
 # Show Schema search_path
-show_seacrh_path = """SHOW search_path;"""
+show_search_path = """SHOW search_path;"""
 
 # Create Table
 create_table = """CREATE TABLE IF NOT EXISTS demo_schema.demo_table(
@@ -93,6 +93,9 @@ insert_values = """INSERT INTO demo_schema.demo_table (id, f_name) VALUES (5, 'L
 insert_multiple_values = """INSERT INTO demo_schema.demo_table (id) VALUES (95), (125), (7);"""
 insert_multiple_values_multiple_columns = """INSERT INTO demo_schema.demo_table (id, f_name) VALUES (5, 'Laila'), (41, 'Juno'), (125, 'Yennefer'), (2, 'Ruby' ), (9852, 'Halifa');"""
 
+
+"""CREATE TABLE customers (
+id (SERIAL)"""
 # Insert Multiple Rows 2
 """INSERT INTO demo_schema.demo_table (id, f_name, l_name) VALUES
 (5, 'Laila', NULL), 
@@ -115,8 +118,6 @@ insert_multiple_values_multiple_columns = """INSERT INTO demo_schema.demo_table 
 (125, 'Zefren', 'Cassel'), 
 (8, 'Jorge', 'Espinoza' ), 
 (295, 'Patel', 'Travis');"""
-
-
 
 # Drop Values:
 drop_rows_where_value = """DELETE FROM demo_schema.demo_table WHERE id = 125;"""
@@ -160,20 +161,19 @@ inner_join = """SELECT a_fruit, b_fruit FROM table_a INNER JOIN table_b ON a_fru
 # Group By
 group_by = """SELECT l_name FROM customers GROUP BY l_name;"""
 
-alias = """SELECT lastName AS customers.l_name """
+table_alias = """SELECT f_name, l_name FROM customers AS last_name WHERE l_name = 'Thompson';"""
+column_alias = """SELECT f_name, l_name AS last_name FROM customers WHERE f_name = 'Ruby';"""
 
-cur.execute(alias)
-# result_returned = cur.fetchall()
+cur.execute(column_alias)
+result_returned = cur.fetchall()
 # print(result_returned)
 
 # To see the results in an indented form instead of a giant string
-# for row in result_returned:
-#     print("id: ", row[0])
-#     print("f_name: ", row[1])
-#     print("l_name: ", row[2])
-    # print("\n")
-
-
+for row in result_returned:
+    if len(result_returned) >= 1:
+        for i in range(len(result_returned)):
+            print("column" + str(i) + ": " + row[i])
+    print("\n")
 
 conn.commit()
 conn.close()
